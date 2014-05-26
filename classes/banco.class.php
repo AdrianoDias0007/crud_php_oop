@@ -22,13 +22,15 @@ abstract class banco{
 	
 	public function  conecta()
 	{
-		$this->conexao = mysql_connect($this->servidor,$this->usuario,$this->senha,TRUE) or die (erro);
-		mysql_select_db($this->nomedobanco) or die ("erro");
+		$this->conexao = mysql_connect($this->servidor,$this->usuario,$this->senha,TRUE)
+		or die ($this->tratarerro(__FILE__,__FUNCTION__,mysql_errno(),mysql_error(),TRUE));
+		mysql_select_db($this->nomedobanco) 
+		or die ($this->tratarerro(__FILE__,__FUNCTION__,mysql_errno(),mysql_error(),TRUE));
 		mysql_query("SET NAMES 'UTF8'");
 		mysql_query("SET character_set_connection=utf8");
 		mysql_query("SET character_set_client=utf8");
 		mysql_query("SET character_set_results=utf8");
-		echo "metodo conecta foi chamado";
+		echo "<br />Metodo conecta foi chamado";
 	}	//conecta
 	
 	public function tratarerro($arquivo=NULL,$rotina=NULL,$numerro=NULL, $msgerro=NULL, $geraexcept=false)
@@ -37,7 +39,7 @@ abstract class banco{
 		if ($rotina==NULL) 	$rotina="nao informada";
 		if ($numerro==NULL) 	$numero=mysql_errno($this->conexao);
 		if ($msgerro==NULL)	$msgerro=mysql_error($this->conexao);
-		$resultado = 		'Ocorreu um erro com  os seguintes detalhes:<br />
+		$resultado = 		'<br />Ocorreu um erro com  os seguintes detalhes:<br />
 							<strong>Arquivo:</strong> ' .$arquivo. '<br />
 							<strong>Rotina:</strong> '	.$rotina. '<br />
 							<strong>Codigo:</strong> '	.$numerro. '<br />
