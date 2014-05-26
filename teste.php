@@ -1,4 +1,4 @@
 <?php
-required_once("classe/teste.class.php");
+require_once("classes/teste.class.php");
 
 $testando = new teste();
