@@ -30,7 +30,10 @@ abstract class banco{
 		mysql_query("SET character_set_connection=utf8");
 		mysql_query("SET character_set_client=utf8");
 		mysql_query("SET character_set_results=utf8");
-		echo "<br />Metodo conecta foi chamado";
+		
+		/*echo "<br />Metodo conecta foi chamado";
+		usado para teste somente usando uma classe para teste*/
+		
 	}	//conecta
 	
 	public function tratarerro($arquivo=NULL,$rotina=NULL,$numerro=NULL, $msgerro=NULL, $geraexcept=false)
